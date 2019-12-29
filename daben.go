@@ -1,21 +1,22 @@
 package daben
 
 import (
+	"fmt"
 	"regexp"
 )
 
-// func main() {
-// 	myText := "Angela Jan dec Dorothea Kasner, 1st January,2014 better known as Angela Merkel, was born in Hamburg, West Germany, on July 17, 1954. Trained as a physicist, Merkel entered politics after the 1989 fall of the Berlin Wall.2nd June, 2015 Rising to the position of chairwoman of the Christian Democratic Union party, Merkel became Germany's first female chancellor and one of the leading figures of the European Union, following the 2005 national elections 20-May-2019."
-// 	pick := pickMonth(myText)
-// 	fmt.Println(p)
-// }
+func main() {
+	myText := ""
+	pick := PickMonth(myText)
+	fmt.Println(pick)
+}
 
 //PickYear :  this function helps you to pick out the years in a sparse text
 func PickYear(text string) []string {
-	if(len(text) == 0){
-		return "String cannot be empty"
+	if len(text) == 0 {
+		return []string{"String cannot be empty"}
 	}
-	else{
+
 	re := regexp.MustCompile(`(?m) \d{4} `)
 
 	var yearArray []string
@@ -26,15 +27,15 @@ func PickYear(text string) []string {
 	}
 
 	return yearArray
-	}
+
 }
 
 //PickMonth :  this function helps to pick months in a sparse text
 func PickMonth(text string) []string {
-	if(len(text) == 0){
-		return "String cannot be empty"
+	if len(text) == 0 {
+		return []string{"String cannot be empty"}
 	}
-	else{
+
 	re := regexp.MustCompile(`(?m) Jan(?:uary)?|Feb(?:ruary)?|Mar(?:ch)?|Apr(?:il)?|May|June?|
 	| July?|Aug(?:ust)?|Sep(?:tember)?|Oct(?:ober)?|Nov(?:ember)?|Dec(?:ember)?`)
 
@@ -46,7 +47,7 @@ func PickMonth(text string) []string {
 	}
 
 	return monthArray
-	}
+
 }
 
 //PickDate :  this function should be used to pick all date formats from a sparse text
@@ -77,10 +78,10 @@ func PickDate(text string) []string {
 		         [\d]{4}-[\d]{1,2}-[\d]{1,2} # xxxx-xx-xx
 		         [ADFJMNOS]\w* [\d]{1,2}, [\d]{4} # for format  may xx, xxxx
 	*/
-	if(len(text) == 0){
-		return "String cannot be empty"
+	if len(text) == 0 {
+		return []string{"String cannot be empty"}
 	}
-	else{
+
 	re := regexp.MustCompile(`[ADFJMNOS]\w* [\d]{1,2}, [\d]{4}| \d{4} |
 	| [\d]{1,2}-[ADFJMNOS]\w*-[\d]{1,4}| [\d]{1,2}/[\d]{1,2}/[\d]{4} | 
 	| [\d]{1,2}.[\d]{1,2}.[\d]{4} |
@@ -96,5 +97,5 @@ func PickDate(text string) []string {
 	}
 
 	return dateArray
-	}
+
 }
