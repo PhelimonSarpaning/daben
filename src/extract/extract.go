@@ -4,10 +4,38 @@ import (
 	"regexp"
 )
 
-// func  preProcess() {
-// 	myText := "Angela Dorothea Kasner, 1st January,2014 better known as Angela Merkel, was born in Hamburg, West Germany, on July 17, 1954. Trained as a physicist, Merkel entered politics after the 1989 fall of the Berlin Wall.2nd June, 2015 Rising to the position of chairwoman of the Christian Democratic Union party, Merkel became Germany's first female chancellor and one of the leading figures of the European Union, following the 2005 national elections 20-May-2019."
-// 	fmt.Println(pickDate(myText))
+// func main() {
+// 	myText := "Angela Jan dec Dorothea Kasner, 1st January,2014 better known as Angela Merkel, was born in Hamburg, West Germany, on July 17, 1954. Trained as a physicist, Merkel entered politics after the 1989 fall of the Berlin Wall.2nd June, 2015 Rising to the position of chairwoman of the Christian Democratic Union party, Merkel became Germany's first female chancellor and one of the leading figures of the European Union, following the 2005 national elections 20-May-2019."
+// 	pick := pickMonth(myText)
+// 	fmt.Println(pick)
 // }
+
+func pickYear(text string) []string {
+	re := regexp.MustCompile(`(?m) \d{4} `)
+
+	var yearArray []string
+	for _, match := range re.FindAllString(text, -1) {
+		if match != "" {
+			yearArray = append(yearArray, match, ", ")
+		}
+	}
+
+	return yearArray
+}
+
+func pickMonth(text string) []string {
+	re := regexp.MustCompile(`(?m) Jan(?:uary)?|Feb(?:ruary)?|Mar(?:ch)?|Apr(?:il)?|May|June?|
+	| July?|Aug(?:ust)?|Sep(?:tember)?|Oct(?:ober)?|Nov(?:ember)?|Dec(?:ember)?`)
+
+	var monthArray []string
+	for _, match := range re.FindAllString(text, -1) {
+		if match != "" {
+			monthArray = append(monthArray, match, ", ")
+		}
+	}
+
+	return monthArray
+}
 
 func pickDate(text string) []string {
 	/*
