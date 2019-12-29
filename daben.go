@@ -10,7 +10,8 @@ import (
 // 	fmt.Println(p)
 // }
 
-func pickYear(text string) []string {
+//PickYear :  this function helps you to pick out the years in a sparse text
+func PickYear(text string) []string {
 	re := regexp.MustCompile(`(?m) \d{4} `)
 
 	var yearArray []string
@@ -23,7 +24,8 @@ func pickYear(text string) []string {
 	return yearArray
 }
 
-func pickMonth(text string) []string {
+//PickMonth :  this function helps to pick months in a sparse text
+func PickMonth(text string) []string {
 	re := regexp.MustCompile(`(?m) Jan(?:uary)?|Feb(?:ruary)?|Mar(?:ch)?|Apr(?:il)?|May|June?|
 	| July?|Aug(?:ust)?|Sep(?:tember)?|Oct(?:ober)?|Nov(?:ember)?|Dec(?:ember)?`)
 
@@ -37,7 +39,8 @@ func pickMonth(text string) []string {
 	return monthArray
 }
 
-func pickDate(text string) []string {
+//PickDate :  this function should be used to pick all date formats from a sparse text
+func PickDate(text string) []string {
 	/*
 				-- current date formats supported --
 				 month dd, yyyy
