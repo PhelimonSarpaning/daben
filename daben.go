@@ -12,6 +12,10 @@ import (
 
 //PickYear :  this function helps you to pick out the years in a sparse text
 func PickYear(text string) []string {
+	if(len(text) == 0){
+		return "String cannot be empty"
+	}
+	else{
 	re := regexp.MustCompile(`(?m) \d{4} `)
 
 	var yearArray []string
@@ -22,10 +26,15 @@ func PickYear(text string) []string {
 	}
 
 	return yearArray
+	}
 }
 
 //PickMonth :  this function helps to pick months in a sparse text
 func PickMonth(text string) []string {
+	if(len(text) == 0){
+		return "String cannot be empty"
+	}
+	else{
 	re := regexp.MustCompile(`(?m) Jan(?:uary)?|Feb(?:ruary)?|Mar(?:ch)?|Apr(?:il)?|May|June?|
 	| July?|Aug(?:ust)?|Sep(?:tember)?|Oct(?:ober)?|Nov(?:ember)?|Dec(?:ember)?`)
 
@@ -37,6 +46,7 @@ func PickMonth(text string) []string {
 	}
 
 	return monthArray
+	}
 }
 
 //PickDate :  this function should be used to pick all date formats from a sparse text
@@ -67,7 +77,10 @@ func PickDate(text string) []string {
 		         [\d]{4}-[\d]{1,2}-[\d]{1,2} # xxxx-xx-xx
 		         [ADFJMNOS]\w* [\d]{1,2}, [\d]{4} # for format  may xx, xxxx
 	*/
-
+	if(len(text) == 0){
+		return "String cannot be empty"
+	}
+	else{
 	re := regexp.MustCompile(`[ADFJMNOS]\w* [\d]{1,2}, [\d]{4}| \d{4} |
 	| [\d]{1,2}-[ADFJMNOS]\w*-[\d]{1,4}| [\d]{1,2}/[\d]{1,2}/[\d]{4} | 
 	| [\d]{1,2}.[\d]{1,2}.[\d]{4} |
@@ -83,4 +96,5 @@ func PickDate(text string) []string {
 	}
 
 	return dateArray
+	}
 }
