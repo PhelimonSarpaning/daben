@@ -1,28 +1,28 @@
 package daben
 
 import (
-	"fmt"
 	"regexp"
 )
 
-func main() {
-	myText := ""
-	pick := PickMonth(myText)
-	fmt.Println(pick)
-}
+// func main() {
+// 	myText := ""
+// 	pick := PickMonth(myText)
+// 	fmt.Println(pick)
+// }
 
 //PickYear :  this function helps you to pick out the years in a sparse text
 func PickYear(text string) []string {
+	var yearArray []string
 	if len(text) == 0 {
-		return []string{"String cannot be empty"}
+		errorMessage := "error : String cannot be empty"
+		return []string{errorMessage}
 	}
 
 	re := regexp.MustCompile(`(?m) \d{4} `)
 
-	var yearArray []string
 	for _, match := range re.FindAllString(text, -1) {
 		if match != "" {
-			yearArray = append(yearArray, match, ", ")
+			yearArray = append(yearArray, match)
 		}
 	}
 
@@ -42,7 +42,7 @@ func PickMonth(text string) []string {
 	var monthArray []string
 	for _, match := range re.FindAllString(text, -1) {
 		if match != "" {
-			monthArray = append(monthArray, match, ", ")
+			monthArray = append(monthArray, match)
 		}
 	}
 
@@ -92,7 +92,7 @@ func PickDate(text string) []string {
 	var dateArray []string
 	for _, match := range re.FindAllString(text, -1) {
 		if match != "" {
-			dateArray = append(dateArray, match, ", ")
+			dateArray = append(dateArray, match)
 		}
 	}
 
