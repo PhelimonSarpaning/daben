@@ -1,6 +1,8 @@
 ## daben
 A Go package for picking dates from text.
 
+[![GoDoc](https://godoc.org/github.com/PhelimonSarpaning/daben?status.svg)](https://godoc.org/github.com/PhelimonSarpaning/daben)
+
 Daben is an Ghanaian Akan language which literally means "when".
 
 ## Install
